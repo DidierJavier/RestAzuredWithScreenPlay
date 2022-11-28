@@ -2,7 +2,6 @@ package co.com.sofka.certification.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import lombok.Builder;
 import lombok.Data;
 
 @Data

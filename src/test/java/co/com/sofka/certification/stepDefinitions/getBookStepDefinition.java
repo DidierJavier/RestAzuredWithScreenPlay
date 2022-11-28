@@ -16,8 +16,8 @@ import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 
 import java.util.Map;
 
-import static co.com.sofka.certification.utils.Constants.BASE_URL_API;
-import static co.com.sofka.certification.utils.Constants.DIDIER;
+import static co.com.sofka.certification.utils.constants.Constants.BASE_URL_API;
+import static co.com.sofka.certification.utils.constants.Constants.DIDIER;
 import static co.com.sofka.certification.utils.FieldsResponse.*;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;

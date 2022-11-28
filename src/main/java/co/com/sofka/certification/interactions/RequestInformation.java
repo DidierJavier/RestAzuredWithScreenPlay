@@ -5,7 +5,7 @@ import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.rest.interactions.Get;
 
-import static co.com.sofka.certification.utils.Constants.URL_SEARCHBOOK;
+import static co.com.sofka.certification.utils.constants.Constants.URL_SEARCHBOOK;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class RequestInformation implements Interaction {

@@ -6,7 +6,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.Performable;
 
-import static co.com.sofka.certification.utils.Constants.RESPONSE_GET_BOOK;
+import static co.com.sofka.certification.utils.constants.Constants.RESPONSE_GET_BOOK;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class SaveResponseInformation implements Interaction {

@@ -10,8 +10,8 @@ import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 
-import static co.com.sofka.certification.utils.Constants.BASE_URL_API;
-import static co.com.sofka.certification.utils.Constants.DIDIER;
+import static co.com.sofka.certification.utils.constants.Constants.BASE_URL_API;
+import static co.com.sofka.certification.utils.constants.Constants.DIDIER;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 
 public class UpdateBooksStepDefinition {

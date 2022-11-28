@@ -1,15 +1,33 @@
 package co.com.sofka.certification.stepDefinitions;
 
+import co.com.sofka.certification.tasks.GenerateToken;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.serenitybdd.rest.SerenityRest;
+import net.serenitybdd.screenplay.actors.OnStage;
+import net.serenitybdd.screenplay.actors.OnlineCast;
+import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
+
+import static co.com.sofka.certification.utils.Constants.BASE_URL_API;
+import static co.com.sofka.certification.utils.Constants.DIDIER;
+import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 
 public class UpdateBooksStepDefinition {
 
+    @Before
+    public void setup(){
+        OnStage.setTheStage(OnlineCast.whereEveryoneCan(
+                CallAnApi.at(BASE_URL_API)));
+        SerenityRest.useRelaxedHTTPSValidation();
+    }
+
     @Given("I generate access token")
     public void iGenerateAccessToken() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        theActorCalled(DIDIER).wasAbleTo(
+                GenerateToken.data()
+        );
     }
     @When("I update book with the information")
     public void iUpdateBookWithTheInformation(io.cucumber.datatable.DataTable dataTable) {

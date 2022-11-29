@@ -22,7 +22,7 @@ public class RequestToken implements Interaction {
                 Post.to(URL_GENERATE_TOKEN)
                         .with(
                                 requestSpecification -> requestSpecification
-                                        .headers(CONTENT_TYPE_JSON.getKey(), CONTENT_TYPE_JSON.getValue())
+                                        .header(CONTENT_TYPE_JSON.getKey(), CONTENT_TYPE_JSON.getValue())
                                         .body(bodyGetToken())
                                         .log().all()
                         )

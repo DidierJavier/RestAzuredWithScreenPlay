@@ -9,5 +9,5 @@ Feature: As an Automator I want to create the automation test
 
     Examples:
       |BookId|Firstname  |Lastname|Totalprice|Depositpaid  |Checkin   |Checkout  |AdditionalNeeds|
-      |8516  |Nick       |Smith   |100       |true         |2020-11-11|2020-12-12|Breakfast      |
+      |11484 |Dane       |Combs   |111       |true         |2018-01-01|2019-01-01|Breakfast      |
      # |2052  |Chris      |Redfield|213       |true         |2023-02-02|2017-03-02|454adfs&*      |

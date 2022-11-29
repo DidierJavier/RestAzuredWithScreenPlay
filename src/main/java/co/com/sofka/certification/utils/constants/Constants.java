@@ -14,4 +14,7 @@ public class Constants {
 
     public static final String CONTENT_TYPE_VALUE = "application/json";
 
+    public static final String TOKEN_RESPONSE = "Token Response";
+    public static final String URL_UPDATE_BOOK = "booking/%s";
+
 }

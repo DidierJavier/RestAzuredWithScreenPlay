@@ -2,6 +2,7 @@ package co.com.sofka.certification.stepDefinitions;
 
 import co.com.sofka.certification.models.BookData;
 import co.com.sofka.certification.models.Bookingdates;
+import co.com.sofka.certification.questions.BookDataResponse;
 import co.com.sofka.certification.tasks.GenerateToken;
 import co.com.sofka.certification.tasks.UpdateBook;
 import io.cucumber.java.Before;
@@ -12,12 +13,13 @@ import io.cucumber.java.en.When;
 import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 
 import java.util.Map;
 
-import static co.com.sofka.certification.utils.constants.Constants.BASE_URL_API;
-import static co.com.sofka.certification.utils.constants.Constants.DIDIER;
+import static co.com.sofka.certification.utils.FieldsResponse.*;
+import static co.com.sofka.certification.utils.constants.Constants.*;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
@@ -41,7 +43,7 @@ public class UpdateBooksStepDefinition {
         resp.setFirstname(obj.get("Firstname") == null ? "" : obj.get("Firstname"));
         resp.setLastname(obj.get("Lastname") == null ? "" : obj.get("Lastname"));
         resp.setTotalprice(Double.valueOf(obj.get("Totalprice") == null ? "" : obj.get("Totalprice")));
-        resp.setDepositpaid(Boolean.valueOf(obj.get("Depositpaid") == null ? "" : obj.get("IdBook")));
+        resp.setDepositpaid(Boolean.valueOf(obj.get("Depositpaid") == null ? "" : obj.get("Depositpaid")));
         resp.setBookingdates(bookingdates);
         resp.setAdditionalneeds(obj.get("AdditionalNeeds") == null ? "" : obj.get("AdditionalNeeds"));
 
@@ -61,14 +63,15 @@ public class UpdateBooksStepDefinition {
         );
     }
     @Then("The service display the updated information")
-    public void theServiceDisplayTheUpdatedInformation(io.cucumber.datatable.DataTable dataTable) {
-        // Write code here that turns the phrase above into concrete actions
-        // For automatic transformation, change DataTable to one of
-        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-        // Double, Byte, Short, Long, BigInteger or BigDecimal.
-        //
-        // For other transformations you can register a DataTableType.
-        throw new io.cucumber.java.PendingException();
+    public void theServiceDisplayTheUpdatedInformation(BookData data) {
+        theActorInTheSpotlight().attemptsTo(
+                Ensure.that(BookDataResponse.extract(FIRST_NAME).from(RESPONSE_UPDATE_BOOK)).isEqualTo(data.getFirstname()),
+                Ensure.that(BookDataResponse.extract(LAST_NAME).from(RESPONSE_UPDATE_BOOK)).isEqualTo(data.getLastname()),
+                Ensure.that(BookDataResponse.extract(TOTAL_PRICE).from(RESPONSE_UPDATE_BOOK)).isEqualTo(Double.toString(data.getTotalprice())),
+                Ensure.that(BookDataResponse.extract(DEPOSIT_PAID).from(RESPONSE_UPDATE_BOOK)).isEqualTo(Boolean.toString(data.getDepositpaid())),
+                Ensure.that(BookDataResponse.extract(CHECKIN).from(RESPONSE_UPDATE_BOOK)).isEqualTo(data.getBookingdates().getCheckin()),
+                Ensure.that(BookDataResponse.extract(CHECKOUT).from(RESPONSE_UPDATE_BOOK)).isEqualTo(data.getBookingdates().getCheckout()),
+                Ensure.that(BookDataResponse.extract(ADDITIONALNEEDS).from(RESPONSE_UPDATE_BOOK)).isEqualTo(data.getAdditionalneeds())
+        );
     }
 }

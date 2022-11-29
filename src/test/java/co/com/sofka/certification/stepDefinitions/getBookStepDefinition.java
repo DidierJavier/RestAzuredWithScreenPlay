@@ -16,9 +16,8 @@ import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 
 import java.util.Map;
 
-import static co.com.sofka.certification.utils.constants.Constants.BASE_URL_API;
-import static co.com.sofka.certification.utils.constants.Constants.DIDIER;
 import static co.com.sofka.certification.utils.FieldsResponse.*;
+import static co.com.sofka.certification.utils.constants.Constants.*;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
@@ -46,7 +45,6 @@ public class getBookStepDefinition {
         resp.setAdditionalneeds(obj.get("AdditionalNeeds") == null ? "" : obj.get("AdditionalNeeds"));
 
         return resp;
-
     }
 
     @When("I request book information with id {string}")
@@ -58,12 +56,13 @@ public class getBookStepDefinition {
     @Then("The service must show")
     public void theServiceMustShow(BookResponse data) {
         theActorInTheSpotlight().attemptsTo(
-                Ensure.that(BookDataResponse.extract(FIRST_NAME)).isEqualTo(data.getFirstname()),
-                Ensure.that(BookDataResponse.extract(LAST_NAME)).isEqualTo(data.getLastname()),
-                Ensure.that(BookDataResponse.extract(TOTAL_PRICE)).isEqualTo(Double.toString(data.getTotalprice())),
-                Ensure.that(BookDataResponse.extract(DEPOSIT_PAID)).isEqualTo(Boolean.toString(data.getDepositpaid())),
-                Ensure.that(BookDataResponse.extract(CHECKIN)).isEqualTo(data.getBookingdates().getCheckin()),
-                Ensure.that(BookDataResponse.extract(CHECKOUT)).isEqualTo(data.getBookingdates().getCheckout())
+                Ensure.that(BookDataResponse.extract(FIRST_NAME).from(RESPONSE_GET_BOOK)).isEqualTo(data.getFirstname()),
+                Ensure.that(BookDataResponse.extract(LAST_NAME).from(RESPONSE_GET_BOOK)).isEqualTo(data.getLastname()),
+                Ensure.that(BookDataResponse.extract(TOTAL_PRICE).from(RESPONSE_GET_BOOK)).isEqualTo(Double.toString(data.getTotalprice())),
+                Ensure.that(BookDataResponse.extract(DEPOSIT_PAID).from(RESPONSE_GET_BOOK)).isEqualTo(Boolean.toString(data.getDepositpaid())),
+                Ensure.that(BookDataResponse.extract(CHECKIN).from(RESPONSE_GET_BOOK)).isEqualTo(data.getBookingdates().getCheckin()),
+                Ensure.that(BookDataResponse.extract(CHECKOUT).from(RESPONSE_GET_BOOK)).isEqualTo(data.getBookingdates().getCheckout()),
+                Ensure.that(BookDataResponse.extract(ADDITIONALNEEDS).from(RESPONSE_GET_BOOK)).isEqualTo(data.getAdditionalneeds())
         );
     }
 

@@ -29,4 +29,5 @@ public class BookResponse {
     public Bookingdates getBookingdates() {
         return bookingdates == null ? new Bookingdates() : bookingdates;
     }
+
 }

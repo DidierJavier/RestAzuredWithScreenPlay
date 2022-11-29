@@ -17,4 +17,9 @@ public class Constants {
     public static final String TOKEN_RESPONSE = "Token Response";
     public static final String URL_UPDATE_BOOK = "booking/%s";
 
+    public static final String COOKIE = "Cookie";
+
+    public static final String COOKIE_VALUE = "token=";
+
+    public static final String RESPONSE_UPDATE_BOOK = "Response Update Book";
 }

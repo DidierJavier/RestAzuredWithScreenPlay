@@ -1,12 +1,14 @@
 package co.com.sofka.certification.tasks;
 
 import co.com.sofka.certification.interactions.RequestUpdateBook;
+import co.com.sofka.certification.interactions.SaveResponseInformation;
 import co.com.sofka.certification.models.BookData;
 import co.com.sofka.certification.models.BookResponse;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 
+import static co.com.sofka.certification.utils.constants.Constants.RESPONSE_UPDATE_BOOK;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class UpdateBook implements Task {
@@ -24,7 +26,8 @@ public class UpdateBook implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                RequestUpdateBook.with(data)
+                RequestUpdateBook.with(data),
+                SaveResponseInformation.response(RESPONSE_UPDATE_BOOK)
         );
     }
 }

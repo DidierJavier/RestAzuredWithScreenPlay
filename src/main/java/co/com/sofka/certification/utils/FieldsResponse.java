@@ -8,5 +8,5 @@ public enum FieldsResponse {
     DEPOSIT_PAID,
     CHECKIN,
     CHECKOUT,
-    ADDITIONALNEDDS
+    ADDITIONALNEEDS
 }

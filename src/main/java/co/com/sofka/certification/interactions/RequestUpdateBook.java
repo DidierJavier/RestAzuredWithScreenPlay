@@ -5,10 +5,13 @@ import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.Performable;
+import net.serenitybdd.screenplay.rest.interactions.Post;
 import net.serenitybdd.screenplay.rest.interactions.Put;
 
-import static co.com.sofka.certification.utils.constants.Constants.TOKEN_RESPONSE;
-import static co.com.sofka.certification.utils.constants.Constants.URL_UPDATE_BOOK;
+import static co.com.sofka.certification.utils.HeaderParamsApi.CONTENT_TYPE_JSON;
+import static co.com.sofka.certification.utils.HeaderParamsApi.COOKIES;
+import static co.com.sofka.certification.utils.constants.Constants.*;
+import static co.com.sofka.certification.utils.constants.GeneratyBody.bodyUpdateBook;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class RequestUpdateBook implements Interaction {
@@ -31,6 +34,13 @@ public class RequestUpdateBook implements Interaction {
         String token = actor.recall(TOKEN_RESPONSE).toString();
         actor.attemptsTo(
                 Put.to(String.format(URL_UPDATE_BOOK, idBook))
+                        .with(
+                                requestSpecification -> requestSpecification
+                                        .header(CONTENT_TYPE_JSON.getKey(), CONTENT_TYPE_JSON.getValue())
+                                        .header(COOKIES.getKey(), COOKIES.getValue() + "" + token)
+                                        .body(bodyUpdateBook(data))
+                                        .log().all()
+                        )
         );
     }
 

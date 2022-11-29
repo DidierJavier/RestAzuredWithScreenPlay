@@ -7,10 +7,10 @@ Feature: As an Automator I want to create the automation test
       |IdBook  |Firstname  |Lastname  |Totalprice  |Depositpaid  |Checkin   |Checkout  |AdditionalNeeds  |
       |<IdBook>|<Firstname>|<Lastname>|<Totalprice>|<Depositpaid>|<Checkin> |<Checkout>|<AdditionalNeeds>|
     Then The service display the updated information
-      |Firstname  |Lastname  |Totalprice  |Depositpaid  |Checkin  |Checkout  |AdditionalNeeds
-      |<Firstname>|<Lastname>|<Totalprice>|<Depositpaid>|<Checkin>|<Checkout>|<AdditionalNeeds>
+      |Firstname  |Lastname  |Totalprice  |Depositpaid  |Checkin  |Checkout  |AdditionalNeeds  |
+      |<Firstname>|<Lastname>|<Totalprice>|<Depositpaid>|<Checkin>|<Checkout>|<AdditionalNeeds>|
 
     Examples:
       |IdBook|Firstname|Lastname    |Totalprice|Depositpaid  |Checkin   |Checkout  |AdditionalNeeds|
-      |11484 |Sofka    |Technologies|65000     |false        |2022-08-10|2022-09-10|Automation Test|
+      |5087  |Sofkaaa  |Technologies|65000     |true         |2022-08-10|2022-09-10|Automation Test|
      # |2052  |Chris      |Redfield|213       |true         |2023-02-02|2017-03-02|454adfs&*      |
